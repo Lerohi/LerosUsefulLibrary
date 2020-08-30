@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,7 @@ public class FileEditor {
 ////////////////////////////////Constructor////////////////////////////////
 
 	public FileEditor() {
-
+		
 	}
 
 ///////////////////////////////Main-Methods////////////////////////////////
@@ -70,7 +71,7 @@ public class FileEditor {
 	 * Reads the content of a file and returns it as a String
 	 * 
 	 * @param file 		An Object of the class "File" that represents the file
-	 * @return 			A String containing the content of file that is being read
+	 * @return 			A String containing the content of the file that is being read
 	 */
 	public String read(File file) {
 
@@ -89,6 +90,49 @@ public class FileEditor {
 			e.printStackTrace();
 		}
 		return res;
+	}
+	
+	/**
+	 * Reads the content of a file as lines and returns it as an ArrayList containing the lines as Strings
+	 * 
+	 * @param file 		An Object of the class "File" that represents the file
+	 * @return 			An ArrayList containing the lines of the file that is being read as Strings
+	 */
+	public ArrayList<String> readLines(File file) {
+
+		ArrayList<String> res = new ArrayList<>();
+		ensureFileExistance(file);
+
+		try {
+
+			Scanner sc = new Scanner(file);
+			while(sc.hasNextLine()) {
+				res.add(sc.nextLine());
+			}
+			
+			sc.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	/**
+	 * 
+	 * Reads the content of a file and returns it as a String
+	 * 
+	 * @param file		An Object of the class "File" that represents the file
+	 * @param line		The number of the line that is supposed to be read
+	 * @return			A String containing the content of the line that is being read
+	 */
+	public String readSpecificLine(File file, int line) {
+
+		String res = "";
+		ArrayList<String> lines = readLines(file);
+		res = lines.get(line);
+		return res;
+		
 	}
 
 //////////////////////////////Support-Methods//////////////////////////////
