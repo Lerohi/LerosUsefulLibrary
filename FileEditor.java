@@ -13,12 +13,6 @@ import java.util.Scanner;
  */
 public class FileEditor {
 
-////////////////////////////////Constructor////////////////////////////////
-
-	public FileEditor() {
-		
-	}
-
 ///////////////////////////////Main-Methods////////////////////////////////
 
 	/**
@@ -27,7 +21,7 @@ public class FileEditor {
 	 * @param file		An Object of the class "File" that represents the file
 	 * @param text		A String containing the text that is supposed to be appended
 	 */
-	public void append(File file, String text) {
+	public static void append(File file, String text) {
 
 		ensureFileExistance(file);
 
@@ -50,7 +44,7 @@ public class FileEditor {
 	 * @param file		An Object of the class "File" that represents the file
 	 * @param text		A String containing the text that is supposed to be appended
 	 */
-	public void overwrite(File file, String text) {
+	public static void overwrite(File file, String text) {
 
 		ensureFileExistance(file);
 
@@ -73,7 +67,7 @@ public class FileEditor {
 	 * @param file 		An Object of the class "File" that represents the file
 	 * @return 			A String containing the content of the file that is being read
 	 */
-	public String read(File file) {
+	public static String read(File file) {
 
 		String res = "";
 		ensureFileExistance(file);
@@ -98,7 +92,7 @@ public class FileEditor {
 	 * @param file 		An Object of the class "File" that represents the file
 	 * @return 			An ArrayList containing the lines of the file that is being read as Strings
 	 */
-	public ArrayList<String> readLines(File file) {
+	public static ArrayList<String> readLines(File file) {
 
 		ArrayList<String> res = new ArrayList<>();
 		ensureFileExistance(file);
@@ -126,7 +120,7 @@ public class FileEditor {
 	 * @param line		The number of the line that is supposed to be read
 	 * @return			A String containing the content of the line that is being read
 	 */
-	public String readSpecificLine(File file, int line) {
+	public static String readSpecificLine(File file, int line) {
 
 		String res = "";
 		ArrayList<String> lines = readLines(file);
@@ -142,7 +136,7 @@ public class FileEditor {
 	 * 
 	 * @param file		An Object of the class "File" that represents the file
 	 */
-	public void ensureFileExistance(File file) {
+	public static void ensureFileExistance(File file) {
 
 		if (!file.exists()) {
 
